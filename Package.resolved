@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "CodeStyler",
+        "repositoryURL": "https://github.com/dimsumthinking/CodeStyler.git",
+        "state": {
+          "branch": "main",
+          "revision": "ee6c8e0e005058a5c6e804d91428d933ac969e85",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}
