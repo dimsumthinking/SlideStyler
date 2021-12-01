@@ -3,6 +3,7 @@ import Foundation
 public typealias BulletedList = MultipleLineComponent
 public typealias ThoughtBubble = MultipleLineComponent
 public typealias MultipleLineCallout = MultipleLineComponent
+public typealias CodeListing = MultipleLineCallout
 
 public struct MultipleLineComponent: Codable, Identifiable {
   public private(set) var id = UUID()
