@@ -6,6 +6,6 @@ final class SlideStylerTests: XCTestCase {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct
         // results.
-        XCTAssertEqual(SlideStyler().text, "Hello, World!")
+//        XCTAssertEqual(SlideStyler().text, "Hello, World!")
     }
 }

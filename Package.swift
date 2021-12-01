@@ -12,14 +12,14 @@ let package = Package(
             targets: ["SlideStyler"]),
     ],
     dependencies: [
-      .package(name: "CodeStyler",
-               url: "https://github.com/dimsumthinking/CodeStyler.git",
-               branch: "main")
+//      .package(name: "CodeStyler",
+//               url: "https://github.com/dimsumthinking/CodeStyler.git",
+//               branch: "main")
     ],
     targets: [
         .target(
             name: "SlideStyler",
-            dependencies: ["CodeStyler"]),
+            dependencies: [/*"CodeStyler"*/]),
         .testTarget(
             name: "SlideStylerTests",
             dependencies: ["SlideStyler"]),

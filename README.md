@@ -1,3 +1,3 @@
 # SlideStyler
 
-A description of this package.
+Experimental - looking to replace CodeStyler with this
