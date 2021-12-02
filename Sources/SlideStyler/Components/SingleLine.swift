@@ -1,7 +1,5 @@
 import Foundation
 
-public typealias Title = SingleLine
-public typealias Subtitle = SingleLine
 public typealias CodeLocation = SingleLine
 public typealias CodeResult = SingleLine
 
