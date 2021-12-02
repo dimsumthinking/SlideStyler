@@ -1,20 +1,20 @@
 import Foundation
 
-public struct ComponentSegment: Codable, Identifiable {
+public struct StyledSegment: Codable, Identifiable {
   public private(set) var id = UUID()
   public let contents: String
-  public private(set) var style: ComponentStyle = .standard
+  public private(set) var style: SegmentStyle = .standard
 }
 
-extension ComponentSegment {
+extension StyledSegment {
   public init(contents: String,
-              style: ComponentStyle = .standard) {
+              style: SegmentStyle = .standard) {
     self.contents = contents
     self.style = style
   }
 }
 
-extension ComponentSegment: CustomStringConvertible {
+extension StyledSegment: CustomStringConvertible {
   public var description: String {
     switch self.style {
     case .standard:

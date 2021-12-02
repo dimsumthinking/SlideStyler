@@ -1,4 +1,4 @@
-public enum ComponentStyle: String, Codable, CaseIterable {
+public enum SegmentStyle: String, Codable, CaseIterable {
   case standard
   case highlighted = "strong"
   case deleted = "del"
@@ -6,10 +6,10 @@ public enum ComponentStyle: String, Codable, CaseIterable {
   case hidden
 }
 
-extension ComponentStyle {
-  public static func from(tag: String) -> ComponentStyle {
+extension SegmentStyle {
+  public static func from(tag: String) -> SegmentStyle {
     guard (openingTags.contains(tag)) else {return .standard}
-    return ComponentStyle(rawValue: tag.removingFirst.removingLast) ?? .standard
+    return SegmentStyle(rawValue: tag.removingFirst.removingLast) ?? .standard
   }
 }
 
@@ -26,17 +26,17 @@ extension String {
   }
 }
 
-extension ComponentStyle {
+extension SegmentStyle {
   public static let tags = openingTags + closingTags
   
   public static let openingTags
-  = ComponentStyle
+  = SegmentStyle
     .allCases
     .dropFirst()
     .map {style in "<\(style.rawValue)>"}
   
   public static let closingTags
-  = ComponentStyle
+  = SegmentStyle
     .allCases
     .dropFirst()
     .map {style in "</\(style.rawValue)>"}

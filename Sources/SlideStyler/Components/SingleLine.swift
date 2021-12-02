@@ -1,28 +1,25 @@
 import Foundation
 
-public typealias Title = SingleLineComponent
-public typealias Subtitle = SingleLineComponent
-public typealias Info = SingleLineComponent
-public typealias SubInfo = SingleLineComponent
-public typealias CodeLocation = SingleLineComponent
-public typealias CodeResult = SingleLineComponent
-public typealias CallOut = SingleLineComponent
+public typealias Title = SingleLine
+public typealias Subtitle = SingleLine
+public typealias CodeLocation = SingleLine
+public typealias CodeResult = SingleLine
 
-public struct SingleLineComponent: Codable, Identifiable {
+public struct SingleLine: Codable, Identifiable {
   public private(set) var id = UUID()
-  public private(set) var segments = [ComponentSegment]()
+  public private(set) var segments = [StyledSegment]()
 }
 
-extension SingleLineComponent {
+extension SingleLine {
   public init(contents: String,
-       startingStyle style: ComponentStyle = .standard) {
+       startingStyle style: SegmentStyle = .standard) {
     let dividers = dividers(from: contents)
       var style = style
       var index = contents.startIndex
       for component in dividers {
         addSegment(contents: contents[index..<component.range.lowerBound],
                    style: style)
-        style = ComponentStyle.from(tag: component.tag)
+        style = SegmentStyle.from(tag: component.tag)
         index = component.range.upperBound
       }
     addSegment(contents: contents[index...],
@@ -30,9 +27,9 @@ extension SingleLineComponent {
   }
 }
 
-extension SingleLineComponent {
+extension SingleLine {
   private func dividers(from string: String) ->  [(range: Range<String.Index>, tag: String)] {
-    ComponentStyle.tags
+    SegmentStyle.tags
       .compactMap {tag in range(of: tag, in: string)}
       .sorted{$0.0.lowerBound < $1.0.lowerBound}
   }
@@ -44,15 +41,15 @@ extension SingleLineComponent {
 }
 
 
-extension SingleLineComponent {
+extension SingleLine {
   mutating private func addSegment(contents: Substring = "",
-                                   style: ComponentStyle = .standard) {
-    segments.append(ComponentSegment(contents: String(contents),
+                                   style: SegmentStyle = .standard) {
+    segments.append(StyledSegment(contents: String(contents),
                              style: style))
   }
 }
 
-extension SingleLineComponent: CustomStringConvertible {
+extension SingleLine: CustomStringConvertible {
   public var description: String {
     segments.reduce(""){lineDescription, segment in
       lineDescription + segment.description
