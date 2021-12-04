@@ -1,9 +1,8 @@
 import Foundation
 
-public typealias BulletedList = SlideComponent
+public typealias Bullet = SlideComponent
 public typealias ThoughtBubble = SlideComponent
 public typealias CodeListing = SlideComponent
-public typealias Info = SlideComponent
 public typealias CallOut = SlideComponent
 public typealias Title = SlideComponent
 public typealias Subtitle = SlideComponent

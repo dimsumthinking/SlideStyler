@@ -2,6 +2,7 @@ import Foundation
 
 public typealias CodeLocation = SingleLine
 public typealias CodeResult = SingleLine
+public typealias Info = SingleLine
 
 public struct SingleLine: Codable, Identifiable {
   public private(set) var id = UUID()

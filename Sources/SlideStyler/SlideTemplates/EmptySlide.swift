@@ -1,8 +1,12 @@
-//
-//  File.swift
-//  
-//
-//  Created by Daniel Steinberg on 12/3/21.
-//
-
 import Foundation
+
+//TODO: For now the ImageSlide and DemoSlide will typealias EmptySlide
+
+public typealias ImageSlide = EmptySlide
+public typealias DemoSlide = EmptySlide
+
+public struct EmptySlide: Slide, Identifiable, Codable {
+  public private(set) var id = UUID()
+  public init() {
+  }
+}
