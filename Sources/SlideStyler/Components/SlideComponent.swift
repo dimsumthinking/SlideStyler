@@ -20,6 +20,9 @@ extension SlideComponent {
                          startingStyle: startingLineStyle))
     }
   }
+  public init(contents: () -> String) {
+    self.init(contents: contents())
+  }
 }
 
 extension SlideComponent {
