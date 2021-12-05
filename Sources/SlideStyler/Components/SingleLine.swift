@@ -24,6 +24,12 @@ extension SingleLine {
     addSegment(contents: contents[index...],
                style: style)
   }
+  
+  public init(startingStyle style: SegmentStyle = .standard,
+              contents: () -> String) {
+    self.init(contents: contents(),
+              startingStyle: style)
+  }
 }
 
 extension SingleLine {
