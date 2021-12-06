@@ -12,6 +12,11 @@ extension StyledSegment {
     self.contents = contents
     self.style = style
   }
+  public init(style: SegmentStyle = .standard,
+              contents: () -> String) {
+    self.init(contents: contents(),
+              style: style)
+  }
 }
 
 extension StyledSegment: CustomStringConvertible {

@@ -12,6 +12,9 @@ extension BulletedList {
       self.bullets.append(Bullet(contents: bullet))
     }
   }
+  public init(bullets: () -> [String]) {
+    self.init(bullets: bullets())
+  }
 }
 
 extension  BulletedList: CustomStringConvertible {
