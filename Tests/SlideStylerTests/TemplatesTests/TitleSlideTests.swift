@@ -51,24 +51,24 @@ with <strong>more</strong> than one line
   }
   
   func testSubtitleOnSlide() {
-    let slide = TitleSlide {
+    let slide = SubtitleSlide {
       "New Slide"
     } subtitle: {
       "With Subtitle"
     }
     let titleLines = slide.title.singleLines
     let titleSegments = slide.title.singleLines[0].segments
-    let subtitleLines = slide.subtitle?.singleLines
-    let subtitleSegments = slide.subtitle?.singleLines[0].segments
+    let subtitleLines = slide.subtitle.singleLines
+    let subtitleSegments = slide.subtitle.singleLines[0].segments
     
     XCTAssertEqual(titleLines.count, 1)
     XCTAssertEqual(titleSegments.count, 1)
-    XCTAssertEqual(subtitleLines?.count, 1)
-    XCTAssertEqual(subtitleSegments?.count, 1)
+    XCTAssertEqual(subtitleLines.count, 1)
+    XCTAssertEqual(subtitleSegments.count, 1)
     
     XCTAssertEqual(titleSegments[0].contents,  "New Slide")
     XCTAssertEqual(titleSegments[0].style, .standard)
-    XCTAssertEqual(subtitleSegments?[0].contents, "With Subtitle")
-    XCTAssertEqual(subtitleSegments?[0].style,  .standard)
+    XCTAssertEqual(subtitleSegments[0].contents, "With Subtitle")
+    XCTAssertEqual(subtitleSegments[0].style,  .standard)
   }
 }
