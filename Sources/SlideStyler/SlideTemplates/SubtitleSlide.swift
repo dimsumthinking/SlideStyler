@@ -19,4 +19,9 @@ extension SubtitleSlide {
     subtitle: subtitle())
   }
   
+  public init(_ strings: () -> (String, String)) {
+    let (title, subtitle) = strings()
+    self.init(title, subtitle: subtitle)
+  }
+  
 }
