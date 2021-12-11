@@ -1,11 +1,11 @@
 import Foundation
 
-public struct SingleThought: SlideContents, Identifiable, Codable {
+public struct Statement: SlideContents, Identifiable, Codable {
   public let title: Title
   public private(set) var id = UUID()
 }
 
-extension SingleThought {
+extension Statement {
   public init(_ title: String) {
     self.title = Title(contents: title)
   }
