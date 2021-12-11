@@ -1,13 +1,13 @@
 import Foundation
 
-public struct BillboardSlide: Slide, Identifiable, Codable {
+public struct Billboard: SlideContents, Identifiable, Codable {
   public let title: Title
   public let subtitle: Subtitle
   public let info: [Info]
   public private(set) var id = UUID()
 }
 
-extension BillboardSlide {
+extension Billboard {
   public init(title: String,
               subtitle: String,
               info: [String]) {

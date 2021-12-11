@@ -3,7 +3,7 @@ import SlideStyler
 
 final class CodeSlideTests: XCTestCase {
   func testSingleLineListingSlide() {
-    let slide = CodeSlide(listing: "import Foundation")
+    let slide = Code(listing: "import Foundation")
     let lines = slide.listing.singleLines
     let listingSegments = slide.listing.singleLines[0].segments
     XCTAssertEqual(lines.count, 1)
@@ -16,7 +16,7 @@ final class CodeSlideTests: XCTestCase {
   }
 
   func testAllFieldsFilledSlide() {
-    let slide = CodeSlide(title: "New slide",
+    let slide = Code(title: "New slide",
                           location: "SomePath/<strong>file.swift</strong>",
                           result: "[0, 1, 2]"){
     """

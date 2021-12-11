@@ -3,7 +3,7 @@ import SlideStyler
 
 final class TitleSlideTests: XCTestCase {
   func testSingleLineSlide() {
-    let slide = TitleSlide("New slide")
+    let slide = SingleThought("New slide")
     let lines = slide.title.singleLines
     let lineOneSegments = slide.title.singleLines[0].segments
     XCTAssertEqual(lines.count, 1)
@@ -13,7 +13,7 @@ final class TitleSlideTests: XCTestCase {
   }
 
   func testMultiplyStyledTitleSlide() {
-    let slide = TitleSlide("New <strong>slide </strong><del>example")
+    let slide = SingleThought("New <strong>slide </strong><del>example")
     let lines = slide.title.singleLines
     let lineOneSegments = slide.title.singleLines[0].segments
     XCTAssertEqual(lines.count, 1)
@@ -29,7 +29,7 @@ final class TitleSlideTests: XCTestCase {
   }
   
   func testMultipleLinesTitleSlide() {
-    let slide = TitleSlide {
+    let slide = SingleThought {
 """
 New slide example
 with <strong>more</strong> than one line
@@ -51,7 +51,7 @@ with <strong>more</strong> than one line
   }
   
   func testSubtitleOnSlide() {
-    let slide = SubtitleSlide {
+    let slide = TitleAndSubtitle {
       "New Slide"
     } subtitle: {
       "With Subtitle"

@@ -1,12 +1,12 @@
 import Foundation
 
-public struct SubtitleSlide: Slide, Identifiable, Codable {
+public struct TitleAndSubtitle: SlideContents, Identifiable, Codable {
   public let title: Title
   public private(set) var subtitle: Subtitle
   public private(set) var id = UUID()
 }
 
-extension SubtitleSlide {
+extension TitleAndSubtitle {
   public init(_ title: String,
               subtitle: String) {
     self.title = Title(contents: title)
@@ -18,10 +18,4 @@ extension SubtitleSlide {
     self.init(title(),
     subtitle: subtitle())
   }
-  
-  public init(_ strings: () -> (String, String)) {
-    let (title, subtitle) = strings()
-    self.init(title, subtitle: subtitle)
-  }
-  
 }

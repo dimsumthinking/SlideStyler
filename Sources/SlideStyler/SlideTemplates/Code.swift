@@ -1,6 +1,6 @@
 import Foundation
 
-public struct CodeSlide: Slide, Identifiable, Codable {
+public struct Code: SlideContents, Identifiable, Codable {
   public private(set) var title: Title?
   public private(set) var location: CodeLocation?
   public let listing: CodeListing
@@ -8,7 +8,7 @@ public struct CodeSlide: Slide, Identifiable, Codable {
   public private(set) var id = UUID()
 }
 
-extension CodeSlide {
+extension Code {
   public init(title: String = "",
               location: String = "",
               result: String = "",

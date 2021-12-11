@@ -3,7 +3,7 @@ import SlideStyler
 
 final class BulletSlideTests: XCTestCase {
   func testSingleLineListingSlide() {
-    let slide = BulletSlide {[
+    let slide = Bullets {[
       "This is bullet one",
       "This is <strong>bullet</strong> two",
       """
