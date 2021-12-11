@@ -1,22 +1,22 @@
 import Foundation
 
-public typealias Bullet = SlideComponent
-public typealias ThoughtBubble = SlideComponent
-public typealias CodeListing = SlideComponent
-public typealias CallOut = SlideComponent
-public typealias Title = SlideComponent
-public typealias Subtitle = SlideComponent
+public typealias Bullet = StyledComponent
+public typealias ThoughtBubble = StyledComponent
+public typealias CodeListing = StyledComponent
+public typealias CallOut = StyledComponent
+public typealias Title = StyledComponent
+public typealias Subtitle = StyledComponent
 
-public struct SlideComponent: Codable, Identifiable {
+public struct StyledComponent: Codable, Identifiable {
   public private(set) var id = UUID()
-  public private(set) var singleLines = [SingleLine]()
+  public private(set) var singleLines = [StyledLine]()
 }
 
-extension SlideComponent {
+extension StyledComponent {
   public init(contents: String) {
     for line in lines(from: contents) {
       singleLines
-        .append(SingleLine(contents: line,
+        .append(StyledLine(contents: line,
                          startingStyle: startingLineStyle))
     }
   }
@@ -25,7 +25,7 @@ extension SlideComponent {
   }
 }
 
-extension SlideComponent {
+extension StyledComponent {
   private func lines(from string: String) -> [String] {
     string.components(separatedBy: .newlines)
   }
@@ -35,7 +35,7 @@ extension SlideComponent {
   }
 }
 
-extension SlideComponent: CustomStringConvertible {
+extension StyledComponent: CustomStringConvertible {
   public var description: String {
     singleLines.reduce(""){listingDescription, line in
       listingDescription + "\n" + line.description

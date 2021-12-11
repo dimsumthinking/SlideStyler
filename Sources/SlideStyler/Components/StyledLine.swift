@@ -1,15 +1,15 @@
 import Foundation
 
-public typealias CodeLocation = SingleLine
-public typealias CodeResult = SingleLine
-public typealias Info = SingleLine
+public typealias CodeLocation = StyledLine
+public typealias CodeResult = StyledLine
+public typealias Info = StyledLine
 
-public struct SingleLine: Codable, Identifiable {
+public struct StyledLine: Codable, Identifiable {
   public private(set) var id = UUID()
   public private(set) var segments = [StyledSegment]()
 }
 
-extension SingleLine {
+extension StyledLine {
   public init(contents: String,
        startingStyle style: SegmentStyle = .standard) {
     let dividers = dividers(from: contents)
@@ -32,7 +32,7 @@ extension SingleLine {
   }
 }
 
-extension SingleLine {
+extension StyledLine {
   private func dividers(from string: String) ->  [(range: Range<String.Index>, tag: String)] {
     SegmentStyle.tags
       .compactMap {tag in range(of: tag, in: string)}
@@ -46,7 +46,7 @@ extension SingleLine {
 }
 
 
-extension SingleLine {
+extension StyledLine {
   mutating private func addSegment(contents: Substring = "",
                                    style: SegmentStyle = .standard) {
     segments.append(StyledSegment(contents: String(contents),
@@ -54,7 +54,7 @@ extension SingleLine {
   }
 }
 
-extension SingleLine: CustomStringConvertible {
+extension StyledLine: CustomStringConvertible {
   public var description: String {
     segments.reduce(""){lineDescription, segment in
       lineDescription + segment.description

@@ -3,21 +3,21 @@ import SlideStyler
 
 final class SlideLineTests: XCTestCase {
   func testEmptyLine() {
-    let line = SingleLine(contents: "")
+    let line = StyledLine(contents: "")
     XCTAssertEqual(line.segments.count,1)
     XCTAssertEqual(line.segments.first?.contents, "")
     XCTAssertEqual(line.segments.first?.style, .standard)
   }
   
   func testLineWithNoTag() {
-    let line = SingleLine(contents: "Test")
+    let line = StyledLine(contents: "Test")
     XCTAssertEqual(line.segments.count, 1)
     XCTAssertEqual(line.segments.first?.contents, "Test")
     XCTAssertEqual(line.segments.first?.style, .standard)
   }
   
   func testLineWithOpeningTagInMiddle() {
-    let line = SingleLine(contents: "Test<del>ing this")
+    let line = StyledLine(contents: "Test<del>ing this")
     XCTAssertEqual(line.segments.count, 2)
     XCTAssertEqual(line.segments[0].contents, "Test")
     XCTAssertEqual(line.segments[0].style, .standard)
@@ -26,7 +26,7 @@ final class SlideLineTests: XCTestCase {
   }
   
   func testLineWithOpeningAndClosingTagInMiddle() {
-    let line = SingleLine(contents: "Test<del>ing</del> this")
+    let line = StyledLine(contents: "Test<del>ing</del> this")
     XCTAssertEqual(line.segments.count, 3)
     XCTAssertEqual(line.segments[0].contents, "Test")
     XCTAssertEqual(line.segments[0].style, .standard)
@@ -37,7 +37,7 @@ final class SlideLineTests: XCTestCase {
   }
   
   func testLineStartingWithOpeningTag() {
-    let line = SingleLine(contents: "<del>Test")
+    let line = StyledLine(contents: "<del>Test")
     XCTAssertEqual(line.segments.count, 2)
     XCTAssertEqual(line.segments[0].contents, "")
     XCTAssertEqual(line.segments[0].style, .standard)
@@ -46,7 +46,7 @@ final class SlideLineTests: XCTestCase {
   }
   
   func testLineStartingWithTextAndClosingTag() {
-    let line = SingleLine(contents: "end of</del> and",
+    let line = StyledLine(contents: "end of</del> and",
                         startingStyle: .deleted )
     XCTAssertEqual(line.segments.count, 2)
     XCTAssertEqual(line.segments[0].contents, "end of")
@@ -56,7 +56,7 @@ final class SlideLineTests: XCTestCase {
   }
   
   func testLineStartingWithClosingTag() {
-    let line = SingleLine(contents: "</del> and",
+    let line = StyledLine(contents: "</del> and",
                         startingStyle: .deleted )
     XCTAssertEqual(line.segments.count, 2)
     XCTAssertEqual(line.segments[0].contents, "")
@@ -66,7 +66,7 @@ final class SlideLineTests: XCTestCase {
   }
   
   func testLineEndingWithOpeningTag() {
-    let line = SingleLine(contents: "This line ends with <del>")
+    let line = StyledLine(contents: "This line ends with <del>")
     XCTAssertEqual(line.segments.count, 2)
     XCTAssertEqual(line.segments[0].contents, "This line ends with ")
     XCTAssertEqual(line.segments[0].style, .standard)
@@ -76,7 +76,7 @@ final class SlideLineTests: XCTestCase {
   }
   
   func testLineEndingWithClosingTag() {
-    let line = SingleLine(contents: "This line ends with </del>",
+    let line = StyledLine(contents: "This line ends with </del>",
                         startingStyle: .deleted)
     XCTAssertEqual(line.segments.count, 2)
     XCTAssertEqual(line.segments[0].contents, "This line ends with ")
@@ -86,7 +86,7 @@ final class SlideLineTests: XCTestCase {
   }
   
   func testLineContainingOnlyOpeningTag() {
-    let line = SingleLine(contents: "<del>",
+    let line = StyledLine(contents: "<del>",
                         startingStyle: .standard)
     XCTAssertEqual(line.segments.count, 2)
     XCTAssertEqual(line.segments[0].contents, "")
@@ -96,7 +96,7 @@ final class SlideLineTests: XCTestCase {
   }
   
   func testLineContainingOnlyClosingTag() {
-    let line = SingleLine(contents: "</del>",
+    let line = StyledLine(contents: "</del>",
                         startingStyle: .deleted)
     XCTAssertEqual(line.segments.count, 2)
     XCTAssertEqual(line.segments[0].contents, "")
@@ -106,7 +106,7 @@ final class SlideLineTests: XCTestCase {
   }
   
   func testLineWithMultipleTags() {
-    let line = SingleLine(contents: "this</del> that and <strong>the other</strong> thing",
+    let line = StyledLine(contents: "this</del> that and <strong>the other</strong> thing",
                         startingStyle: .deleted)
     XCTAssertEqual(line.segments.count, 4)
     XCTAssertEqual(line.segments[0].contents, "this")
@@ -120,7 +120,7 @@ final class SlideLineTests: XCTestCase {
   }
   
   func testLineWithNoSpaceBetweenCloseAndOpenTags() {
-    let line = SingleLine(contents: "this </del><strong>and that",
+    let line = StyledLine(contents: "this </del><strong>and that",
                         startingStyle: .deleted)
     XCTAssertEqual(line.segments.count, 3)
     XCTAssertEqual(line.segments[0].contents, "this ")

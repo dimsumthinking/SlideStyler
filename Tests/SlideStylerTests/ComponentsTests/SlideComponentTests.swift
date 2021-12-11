@@ -3,7 +3,7 @@ import SlideStyler
 
 final class SlideComponentTests: XCTestCase {
   func testEmptyListing() {
-    let listing = SlideComponent(contents: "")
+    let listing = StyledComponent(contents: "")
     XCTAssertEqual(listing.singleLines.count, 1)
     XCTAssertEqual(listing.singleLines[0].segments.count, 1)
     XCTAssertEqual(listing.singleLines.first?.segments.first?.contents, "")
@@ -11,7 +11,7 @@ final class SlideComponentTests: XCTestCase {
   }
   
   func testSingleLineListing() {
-    let listing = SlideComponent(contents: "This is a test")
+    let listing = StyledComponent(contents: "This is a test")
     XCTAssertEqual(listing.singleLines.count, 1)
     XCTAssertEqual(listing.singleLines[0].segments.count, 1)
     XCTAssertEqual(listing.singleLines.first?.segments.first?.contents, "This is a test")
@@ -19,7 +19,7 @@ final class SlideComponentTests: XCTestCase {
   }
   
   func testSingleLineListingWithTag() {
-    let listing = SlideComponent(contents: "This is a <del>test</del> of something")
+    let listing = StyledComponent(contents: "This is a <del>test</del> of something")
     XCTAssertEqual(listing.singleLines.count, 1)
     XCTAssertEqual(listing.singleLines[0].segments.count, 3)
     XCTAssertEqual(listing.singleLines[0].segments[0].contents, "This is a ")
@@ -31,7 +31,7 @@ final class SlideComponentTests: XCTestCase {
   }
   
   func testListingWhereTagExtendsOverMultipleLines() {
-    let listing = SlideComponent(contents:
+    let listing = StyledComponent(contents:
 """
 This is a <del>test of something
  like</del> what <em>I don't know</em>

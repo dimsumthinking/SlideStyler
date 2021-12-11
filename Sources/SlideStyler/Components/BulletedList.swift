@@ -1,6 +1,5 @@
 import Foundation
 
-
 public struct BulletedList: Codable, Identifiable {
   public private(set) var id = UUID()
   public private(set) var bullets = [Bullet]()
