@@ -16,6 +16,12 @@ extension TitleAndSubtitle {
   public init(title: () -> String,
               subtitle: () -> String) {
     self.init(title(),
-    subtitle: subtitle())
+              subtitle: subtitle())
+  }
+  
+  public init(titleAndSubtitle: () -> (String, String)) {
+    let (title, subtitle) = titleAndSubtitle()
+    self.init(title,
+              subtitle: subtitle)
   }
 }
