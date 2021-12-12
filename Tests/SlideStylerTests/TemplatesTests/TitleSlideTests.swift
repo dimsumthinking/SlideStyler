@@ -4,8 +4,8 @@ import SlideStyler
 final class TitleSlideTests: XCTestCase {
   func testSingleLineSlide() {
     let slide = Statement("New slide")
-    let lines = slide.title.singleLines
-    let lineOneSegments = slide.title.singleLines[0].segments
+    let lines = slide.text.singleLines
+    let lineOneSegments = slide.text.singleLines[0].segments
     XCTAssertEqual(lines.count, 1)
     XCTAssertEqual(lineOneSegments.count, 1)
     XCTAssertEqual(lineOneSegments[0].contents,  "New slide")
@@ -14,8 +14,8 @@ final class TitleSlideTests: XCTestCase {
 
   func testMultiplyStyledTitleSlide() {
     let slide = Statement("New <strong>slide </strong><del>example")
-    let lines = slide.title.singleLines
-    let lineOneSegments = slide.title.singleLines[0].segments
+    let lines = slide.text.singleLines
+    let lineOneSegments = slide.text.singleLines[0].segments
     XCTAssertEqual(lines.count, 1)
     XCTAssertEqual(lineOneSegments.count, 4)
     XCTAssertEqual(lineOneSegments[0].contents,  "New ")
@@ -34,9 +34,9 @@ final class TitleSlideTests: XCTestCase {
 New slide example
 with <strong>more</strong> than one line
 """}
-    let lines = slide.title.singleLines
-    let lineOneSegments = slide.title.singleLines[0].segments
-    let lineTwoSegments = slide.title.singleLines[1].segments
+    let lines = slide.text.singleLines
+    let lineOneSegments = slide.text.singleLines[0].segments
+    let lineTwoSegments = slide.text.singleLines[1].segments
     XCTAssertEqual(lines.count, 2)
     XCTAssertEqual(lineOneSegments.count, 1)
     XCTAssertEqual(lineOneSegments[0].contents,  "New slide example")

@@ -1,13 +1,13 @@
 import Foundation
 
 public struct Statement: SlideContents, Identifiable, Codable {
-  public let title: Title
+  public let text: Title
   public private(set) var id = UUID()
 }
 
 extension Statement {
   public init(_ title: String) {
-    self.title = Title(contents: title)
+    self.text = Title(contents: title)
   }
   
   public init(title: () -> String) {
