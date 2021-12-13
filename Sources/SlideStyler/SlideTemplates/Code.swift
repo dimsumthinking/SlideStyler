@@ -30,3 +30,9 @@ extension Code {
   }
   
 }
+
+extension Code {
+  public var lines: [LineOfCode] {
+    listing.singleLines
+  }
+}

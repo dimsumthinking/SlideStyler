@@ -4,6 +4,8 @@ public typealias CodeLocation = StyledLine
 public typealias CodeResult = StyledLine
 public typealias Info = StyledLine
 
+public typealias LineOfCode = StyledLine
+
 public struct StyledLine: Codable, Identifiable {
   public private(set) var id = UUID()
   public private(set) var segments = [StyledSegment]()
