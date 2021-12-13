@@ -19,3 +19,9 @@ extension Bullets {
               bullets: bullets())
   }
 }
+
+extension Bullets {
+  public var list: [Bullet] {
+    bulletedList.bullets
+  }
+}
